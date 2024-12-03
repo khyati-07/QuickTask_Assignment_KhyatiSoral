@@ -162,10 +162,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
     final lastName = _lastNameController.text.trim();
 
     try {
-      // Call signUp function from AuthService
+ 
       await AuthService().signUp(username, password, email, firstName, lastName);
 
-      // Navigate back to the login screen after successful sign-up
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Sign-up successful! You can now log in.'),
+          backgroundColor: Colors.green,
+        ),
+      );
+
+
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => LoginScreen()),
