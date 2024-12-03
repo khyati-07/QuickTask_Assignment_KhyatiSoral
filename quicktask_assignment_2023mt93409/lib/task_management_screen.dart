@@ -148,7 +148,36 @@ class _TaskManagementScreenState extends State<TaskManagementScreen> {
       body: _isLoading
           ? Center(child: CircularProgressIndicator())
           : _tasks.isEmpty
-          ? Center(child: Text('No tasks available.'))
+          ? SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              width: double.infinity,
+              color: Colors.blue,
+              padding: const EdgeInsets.symmetric(vertical: 40.0),
+              child: Text(
+                'Task Management',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            SizedBox(height: 16.0),
+            Center(
+              child: Text(
+                'No tasks available.',
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.black54,
+                ),
+              ),
+            ),
+          ],
+        ),
+      )
           : SingleChildScrollView(
         child: Column(
           children: [
